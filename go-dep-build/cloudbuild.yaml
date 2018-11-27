@@ -1,0 +1,4 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/github.com/nirasan/$PROJECT_ID/go-dep-build', '.']
+images: ['gcr.io/github.com/nirasan/$PROJECT_ID/go-dep-build']
