@@ -1,8 +1,9 @@
 # Build Server
 FROM golang:latest as builder
 ENV GOBIN /go/bin
-WORKDIR /go/src/github.com/nirasan/gcb-examples/go-dep-build
+WORKDIR /go/src/github.com/nirasan/gcb-examples
 COPY / .
+WORKDIR /go/src/github.com/nirasan/gcb-examples/go-dep-build
 RUN go get -u github.com/golang/dep/cmd/dep
 RUN dep ensure
 RUN go test
