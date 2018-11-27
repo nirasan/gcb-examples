@@ -1,10 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/go:alpine'
-  args: ['install', './go-builder']
-  env: ['PROJECT_ROOT=gcb-examples']
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=gcb-examples/go-builder']
 - name: 'gcr.io/cloud-builders/go:alpine'
   args: ['test', 'go-builder']
-  env: ['PROJECT_ROOT=gcb-examples']
+  env: ['PROJECT_ROOT=gcb-examples/go-builder']
 - name: gcr.io/cloud-builders/docker
   args: ['build', '-t', 'gcr.io/github.com/nirasan/$PROJECT_ID/go-builder', '.']
 images: ['gcr.io/github.com/nirasan/$PROJECT_ID/go-builder']
