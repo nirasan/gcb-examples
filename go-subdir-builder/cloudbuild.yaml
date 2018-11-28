@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/go:alpine'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=github.com/nirasan/gcb-examples/go-subdir-builder']
+  dir: 'go-subdir-builder'
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/go-subdir-builder', '.']
+  dir: 'go-subdir-builder'
+images: ['gcr.io/$PROJECT_ID/go-subdir-builder']
+
+
