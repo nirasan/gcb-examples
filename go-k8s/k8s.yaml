@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcb-deployment
+  labels:
+    app: gcb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gcb
+  template:
+    metadata:
+      labels:
+        app: gcb
+    spec:
+      containers:
+      - name: gcb
+        image: gcr.io/go-slack-bot-169307/go-k8s:latest
+        ports:
+        - containerPort: 18080
