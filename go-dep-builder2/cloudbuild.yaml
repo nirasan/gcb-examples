@@ -1,0 +1,18 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-f', 'Dockerfile.dep', '-t', 'gcr.io/$PROJECT_ID/dep', '.']
+  env: ['PROJECT_ROOT=go-dep-builder2']
+  dir: 'go-dep-builder2'
+- name: gcr.io/$PROJECT_ID/dep
+  args: ['ensure']
+  env: ['PROJECT_ROOT=go-dep-builder2']
+  dir: 'go-dep-builder2'
+- name: gcr.io/cloud-builders/go
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=go-dep-builder2']
+  dir: 'go-dep-builder2'
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/go-dep-builder2', '.']
+  dir: 'go-dep-builder2'
+images:
+  - 'gcr.io/$PROJECT_ID/go-dep-builder2'

@@ -1,0 +1,10 @@
+FROM gcr.io/cloud-builders/go:alpine
+
+RUN go get github.com/golang/dep/cmd/dep
+
+RUN pwd && go env && ls $(go env GOPATH)/bin/
+
+COPY dep.ash /builder/bin
+RUN chmod +x /builder/bin/dep.ash
+
+ENTRYPOINT ["/builder/bin/dep.ash"]
