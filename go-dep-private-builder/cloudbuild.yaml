@@ -1,6 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://gcb-examples/.netrc.enc', '.']
+  dir: 'go-dep-private-builder'
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
     - kms
@@ -10,6 +11,7 @@ steps:
     - --location=global
     - --keyring=gcb-keyring
     - --key=github-key
+  dir: 'go-dep-private-builder'
 - name: 'gcr.io/cloud-builders/go:alpine'
   entrypoint: sh
   args:
